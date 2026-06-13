@@ -350,22 +350,11 @@ nav {
 }
 .carousel-track img {
   width: 100%;
-  height: auto;
+  height: 340px;
   object-fit: contain;
-  background: #f0f4fa;
+  background: #ffffff;
 }
-@media (max-width: 768px) {
 
-  .carousel-track img {
-    height: 220px;        /* 控制高度，防止被拉爆 */
-    object-fit: contain;  /* 完整显示 */
-  }
-
-  .carousel-container {
-    padding: 0 0.6rem;
-  }
-
-}
 /* 左右按钮 */
 .carousel-btn {
   position: absolute;
