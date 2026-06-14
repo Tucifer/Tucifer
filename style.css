@@ -430,8 +430,8 @@ a:hover {
 /* 公告 + 图片布局 */
 .announcement-with-img {
   display: flex;
-  gap: 1.8rem;
   align-items: center;
+  gap: 1.8rem;
   border-left: 3px solid #1f5680;
   padding: 1.6rem 2rem;
   border-radius: 1.2rem;
@@ -443,14 +443,13 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent; /* ✅ 不要背景抢圆角 */
 }
 
 .announcement-img img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .announcement-text {
@@ -459,7 +458,9 @@ a:hover {
   padding-left: 0.4rem;
   font-size: 0.95rem;
   color: #0b2b4f;
+  line-height: 1.65;
 }
+
 
 .announcement-text p {
   margin-bottom: 0.6rem;
