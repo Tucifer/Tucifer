@@ -437,6 +437,7 @@ a:hover {
   border-radius: 1.2rem;
 }
 
+/* 左侧图片 */
 .announcement-img {
   flex: 0 0 260px;
   height: 180px;
@@ -448,45 +449,62 @@ a:hover {
 .announcement-img img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  border-radius: 10px;
+  object-fit: contain;          /* ✅ 不裁 */
+  border-radius: 10px;          /* ✅ 照片圆角 */
 }
 
+/* 右侧文字 */
 .announcement-text {
   flex: 1;
-  max-width: 100%;
   padding-left: 0.4rem;
   font-size: 0.95rem;
   color: #0b2b4f;
   line-height: 1.65;
 }
 
-
 .announcement-text p {
   margin-bottom: 0.6rem;
 }
 
+
 @media (max-width: 768px) {
-  .announcement-with-img {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 1.2rem 1.4rem;
+
+  .announcement {
+    display: block; /* ✅ 上下结构 */
+    
+    /* ✅ 关键：用 Margin 代替 Padding 控制内边距 */
+    /* 这样浏览器计算高度时 100% 准确 */
+    padding: 0; 
+    margin: 1rem 1.4rem; 
+    
+    border-left: 3px solid #1f5680;
+    border-radius: 1.2rem;
+  
+    
+    /* ✅ 物理锁死最小高度 */
+    min-height: 420px; 
   }
 
   .announcement-img {
     width: 100%;
-    height: 180px;
-    flex: none;
+    height: 180px; /* 固定高度，不乱 */
+    padding: 1rem 1rem 0 1rem; /* 图片的内边距 */
+    box-sizing: border-box;
+  }
+
+  .announcement-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    display: block;
   }
 
   .announcement-text {
-    max-width: 100%;
-    padding-left: 0;
-    font-size: 0.92rem;
+    padding: 0 1rem 1rem 1rem; /* 文字的内边距 */
+    box-sizing: border-box;
   }
 }
-
-
 
 
 section,
