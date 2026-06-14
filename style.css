@@ -432,20 +432,25 @@ a:hover {
   display: flex;
   gap: 1.8rem;
   align-items: center;
+  background: #f0f7ff;
+  border-left: 3px solid #1f5680;
+  padding: 1.6rem 2rem;
+  border-radius: 1.2rem;
 }
 
 /* 左侧图片 */
 .announcement-img {
-  flex: 0 0 300px;
-  height: 300px;
+  flex: 0 0 260px;
+  height: 180px;           /* ✅ 控制高度，不是 300 */
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .announcement-img img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 10px;
+  height: auto;
+  object-fit: contain;       /* ✅ 比 contain 更适合公告 */
+  border-radius: 6px;
 }
 
 /* 右侧文字 */
@@ -461,9 +466,20 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-  .announcement {
-    min-height: unset;     /* ✅ 取消固定高度 */
+  .announcement-with-img {
+    flex-direction: column;
+    align-items: flex-start;
     padding: 1.2rem 1.4rem;
+  }
+
+  .announcement-img {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 1rem;
+  }
+
+  .announcement-text {
+    max-width: 100%;
     font-size: 0.92rem;
   }
 }
