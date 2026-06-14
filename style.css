@@ -460,6 +460,14 @@ a:hover {
   margin-bottom: 0.8rem;
 }
 
+@media (max-width: 768px) {
+  .announcement {
+    min-height: unset;     /* ✅ 取消固定高度 */
+    padding: 1.2rem 1.4rem;
+    font-size: 0.92rem;
+  }
+}
+
 /* 响应式：手机端上下排列 */
 @media (max-width: 750px) {
   .announcement-with-img {
