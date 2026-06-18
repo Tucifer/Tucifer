@@ -109,6 +109,7 @@ nav {
 .nav-links a:hover {
   border-bottom-color: #1f5680;
   color: #0a2540;
+  text-decoration: none;
 }
 
 /* ===== 英雄区 ===== */
