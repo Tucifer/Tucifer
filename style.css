@@ -529,5 +529,186 @@ section,
   display: block;
 }
 
+/* ===== 外层盒子 ===== */
+/* ===== 外层 ===== */
+.partner-photo {
+  padding: 36px 24px;
+}
+
+/* ===== 横向 ===== */
+.partner-photo .contact-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+}
+
+.partner-photo .contact-row li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 33.33%;
+  text-align: center;
+}
+
+.partner-photo .contact-row i,
+.partner-photo .contact-row img {
+  width: 48px;
+  height: 48px;
+  font-size: 48px;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.partner-photo .contact-row .fa-whatsapp { color: #25D366; }
+.partner-photo .contact-row .fa-weixin    { color: #07C160; }
+
+.partner-photo .contact-row span {
+  font-size: 14px;
+  color: #555;
+}
+
+.partner-photo .contact-row li:hover i,
+.partner-photo .contact-row li:hover img {
+  transform: scale(1.12);
+  opacity: 0.85;
+}
+
+/* ===== ✅ 竖向（最终对齐方案） ===== */
+.contact-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* ✅ 保证 icon + 文字对齐 */
+  gap: 18px;
+
+  /* ✅ 居中整块（不破坏对齐） */
+  margin: 0 auto 22px;
+  width: fit-content;
+}
+
+.contact-row-fixed {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* icon 固定尺寸 */
+.contact-row-fixed .contact-icon {
+  width: 33px;
+  height: 33px;
+  flex-shrink: 0;
+}
+
+/* 文字 */
+.contact-row-fixed div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 15px;
+  color: #333;
+}
+
+/* hover */
+.contact-row-fixed:hover .contact-icon {
+  transform: scale(1.15);
+  opacity: 0.8;
+}
+
+/* 链接 */
+.partner-photo a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.partner-photo a:hover {
+  text-decoration: underline;
+}
+
+/* ===== 手机端 ===== */
+@media (max-width: 480px) {
+  .partner-photo {
+    padding: 24px 16px;
+  }
+
+  .partner-photo .contact-row {
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .partner-photo .contact-row li {
+    gap: 6px;
+  }
+
+  .partner-photo .contact-row i,
+  .partner-photo .contact-row img {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 36px !important;
+  }
+
+  .partner-photo .contact-row span {
+    font-size: 12px;
+  }
+
+  .contact-vertical {
+    gap: 14px;
+  }
+
+  .contact-row-fixed .contact-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contact-row-fixed div {
+    font-size: 13px;
+    gap: 2px;
+  }
+}
+
+ /* ===== 回到顶部 ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1f5680, #0b2b5e);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 24px rgba(31, 86, 128, 0.3);
+      cursor: pointer;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(31, 86, 128, 0.4);
+    }
+@media (max-width: 480px) {
+  /* 回到顶部按钮手机端缩小 */
+  .back-to-top {
+    width: 36px;          /* 原来 48px → 现在 36px */
+    height: 36px;
+    bottom: 1rem;          /* 离底部近一点，更紧凑 */
+    right: 1rem;           /* 离右边近一点 */
+    font-size: 0.9rem;     /* 箭头图标也相应缩小 */
+  }
+}
 
 }
