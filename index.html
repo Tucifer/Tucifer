@@ -936,6 +936,8 @@ My undergraduate research centered on visual interaction design, UI/UX for web a
 </div>
 
 <!-- 联络 -->
+<!-- 联络 -->
+<!-- 联络 -->
 <div id="Contact">
   <h2 class="section-title">
     <i class="fas fa-phone"></i>
@@ -949,14 +951,65 @@ My undergraduate research centered on visual interaction design, UI/UX for web a
   </h2>
 
   <div class="partner-photo">
-    <img src="10.png" alt="Contact Information">
+
+    <!-- 横向 -->
+    <ul class="contact-row">
+      <li>
+        <a href="https://wa.me/85284960017" target="_blank" rel="noopener">
+          <img src="icon1.png" alt="WhatsApp" class="icon-custom">
+        </a>
+        <span>+856 84960017</span>
+      </li>
+      <li>
+        <a href="https://u.wechat.com/MCgw1n7GXdrn3Fm5SXdCaOg?s=2" target="_blank" rel="noopener">
+          <img src="icon2.png" alt="Tuciferjh" class="contact-icon-img">
+        </a>
+        <span>Tuciferjh</span>
+      </li>
+      <li>
+        <a href="privacy policy.html" target="_blank" rel="noopener">
+          <img src="icon3.png" alt="Official Site" class="icon-custom">
+        </a>
+        <span>Privacy Policy</span>
+      </li>
+    </ul>
+
+    <!-- ✅ 竖向（邮箱 + 电话） -->
+    <div class="contact-vertical">
+
+      <div class="contact-row-fixed">
+        <img src="icon4.png" class="contact-icon" alt="Email">
+        <div>
+          <a href="mailto:Tucifer-sh@outlook.com">Tucifer-sh@outlook.com</a>
+          <a href="mailto:s1162517@s.eduhk.hk">s1162517@s.eduhk.hk</a>
+        </div>
+      </div>
+
+      <div class="contact-row-fixed">
+        <a href="tel:+8618356400479">
+          <img src="icon5.png" class="contact-icon" alt="Phone">
+        </a>
+        <div>
+          <a href="tel:+85284960017">(+852) 84960017</a>
+          <a href="tel:+8618356400479">(+86) 18356400479</a>
+          
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </div>
+
 
     <footer>
       <p>© 2026 TIAN JIAHUI. All Rights Reserved.</p>
     </footer>
 
+  </div>
+
+  <div class="back-to-top" id="backToTop" title="Back to Top">
+    <i class="fas fa-chevron-up"></i>
   </div>
 
   <!-- 语言切换脚本 -->
@@ -1047,6 +1100,20 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     }
   });
 });
+
+
+ const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
 </script>
 
 </body>
