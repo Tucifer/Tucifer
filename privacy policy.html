@@ -194,23 +194,7 @@
       color: #8aa5c0;
     }
 
-    @media (max-width: 480px) {
-      .page-header {
-        gap: 1rem;
-        padding: 1.5rem 0.5rem 1rem;
-      }
-      .page-header .icon-wrapper {
-        width: 56px;
-        height: 56px;
-        border-radius: 16px;
-      }
-      .page-header .icon-wrapper i {
-        font-size: 1.4rem;
-      }
-      .page-header h1 {
-        font-size: 1.5rem;
-      }
-    }
+   
 
     /* ===== 内容卡片 ===== */
     .content-card {
@@ -398,15 +382,87 @@
 }
     @media (max-width: 480px) {
       .nav-links {
-        gap: 0.5rem;
-      }
-      .nav-links a span {
-        display: none;
-      }
-      .nav-links a i {
-        font-size: 1rem;
-      }
+    gap: 0.4rem;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .nav-links a span {
+    display: inline;   /* ✅ 显示文字 */
+  }
     }
+
+/* ===============================
+   隐私政策页 · 手机端强制缩放
+   =============================== */
+
+@media (max-width: 480px) {
+
+  /* ===== 页面头部 ===== */
+  .page-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.35rem;
+    padding: 0.8rem 0.4rem 0.6rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+
+  .page-header .icon-wrapper {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .page-header .icon-wrapper i {
+    font-size: 0.9rem;
+  }
+
+  .page-header .update-date {
+    font-size: 0.75rem;
+  }
+
+  /* ===== 正文卡片 ===== */
+  .content-card {
+    padding: 0.9rem 0.8rem;
+    border-radius: 14px;
+  }
+
+  /* ===== 小节标题 ===== */
+  .content-card h2 {
+    font-size: 0.95rem;
+    gap: 0.4rem;
+  }
+
+  .content-card h2 i {
+    width: 22px;
+    height: 22px;
+    font-size: 0.75rem;
+  }
+
+  /* ===== 正文文字 ===== */
+  .content-card p,
+  .content-card ul li {
+    font-size: 0.78rem;
+    line-height: 1.6;
+  }
+
+  /* ===== 分隔线 ===== */
+  .divider {
+    width: 36px;
+    height: 2px;
+    margin-bottom: 0.45rem;
+  }
+}
+
+    
   </style>
 </head>
 
@@ -489,19 +545,20 @@
     </div>
 
     <!-- 页面标题 -->
-    <div class="page-header">
+   
+
+    <!-- 内容区域 -->
+    <div class="content-card">
+
+       <div class="page-header">
       <div class="icon-wrapper">
         <i class="fas fa-shield-alt"></i>
       </div>
       <div class="title-text">
         <h1 data-en="Privacy Policy" data-zh-hant="隱私政策" data-zh-hans="隐私政策">Privacy Policy</h1>
-        <p class="update-date"><i class="fas fa-calendar-alt"></i> <span data-en="Last updated: January 15, 2026" data-zh-hant="最後更新：2026年1月15日" data-zh-hans="最后更新：2026年1月15日">Last updated: January 15, 2026</span></p>
+        <p class="update-date"><i class="fas fa-calendar-alt"></i> <span data-en="Last updated: Jun 18, 2026" data-zh-hant="最後更新：2026年6月18日" data-zh-hans="最后更新：2026年6月18日">Last updated: Jun 18, 2026</span></p>
       </div>
     </div>
-
-    <!-- 内容区域 -->
-    <div class="content-card">
-
       <!-- 1. 概述 -->
       <section>
         <h2><i class="fas fa-info-circle"></i> <span data-en="1. Overview" data-zh-hant="1. 概述" data-zh-hans="1. 概述">1. Overview</span></h2>
@@ -664,8 +721,8 @@
       <section>
         <h2><i class="fas fa-child"></i> <span data-en="9. Children's Privacy" data-zh-hant="9. 兒童隱私" data-zh-hans="9. 儿童隐私">9. Children's Privacy</span></h2>
         <div class="divider"></div>
-        <p data-en="Our website is not intended for children under the age of 13. We do not knowingly collect personal information from children. If we become aware that a child has provided us with personal information, we will take steps to delete such information." data-zh-hant="本網站不適用於 13 歲以下的兒童。我們不會故意收集兒童的個人資訊。如果我們發現有兒童向我們提供了個人資訊，我們將採取措施刪除該等資訊。">
-          Our website is not intended for children under the age of 13. We do not knowingly collect personal information from children. If we become aware that a child has provided us with personal information, we will take steps to delete such information.
+        <p data-en="We do not knowingly collect personal information from children. If we become aware that a child has provided us with personal information, we will take steps to delete such information." data-zh-hant="我們不會故意收集兒童的個人資訊。如果我們發現有兒童向我們提供了個人資訊，我們將採取措施刪除該等資訊。">
+          We do not knowingly collect personal information from children. If we become aware that a child has provided us with personal information, we will take steps to delete such information.
         </p>
       </section>
 
