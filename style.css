@@ -727,4 +727,221 @@ section,
   }
 }
 
+/* =========================
+   手机端字体全面压缩（必生效）
+   ========================= */
+@media (max-width: 480px) {
+
+  /* 页面整体 */
+  body {
+    font-size: 14px;
+  }
+
+  /* 区块标题 */
+  .section-title {
+    font-size: 1.1rem;
+    gap: 0.4rem;
+  }
+
+  /* 正文段落 */
+  .info-block p,
+  .info-block li,
+  .home-list li,
+  .work-card p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  /* 小标题 h4 */
+  .info-block h4,
+  .work-card h4 {
+    font-size: 0.92rem;
+  }
+
+  /* 徽章 */
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.6rem;
+  }
+
+  /* 卡片 */
+  .card,
+  .info-block,
+  .work-card {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  /* 时间线间距 */
+  .timeline-item {
+    margin-bottom: 0.8rem;
+  }
+
+  /* 公告栏 */
+  .announcement-text p {
+    font-size: 0.82rem;
+  }
+
+  /* 联系方式 */
+  .contact-row-fixed {
+    font-size: 0.82rem;
+  }
+}
+
+/* ===== 首页三个卡片（Research / Updates / Links）===== */
+@media (max-width: 480px) {
+
+  /* 卡片标题 */
+  .home-grid .card h3 {
+    font-size: 0.92rem;
+  }
+
+  /* 卡片图标 */
+  .home-grid .card > i {
+    font-size: 1.1rem;
+  }
+
+  /* 列表文字 */
+  .home-grid .home-list li {
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+
+  /* 卡片间距再收紧 */
+  .home-grid .card {
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+  }
+}
+
+/* =========================
+   Hero 区 · 手机端适配
+   ========================= */
+@media (max-width: 480px) {
+
+  /* Hero 整体 */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.2rem 0.6rem 1.6rem;
+  }
+
+  /* 头像 */
+  .photo-frame {
+    width: 110px;
+    height: 110px;
+  }
+
+  /* 姓名 */
+  .intro-text h1 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  /* 英文名 */
+  .name-en {
+    font-size: 1.15rem;
+  }
+
+  /* 中文名 / 昵称 */
+  .name-cn {
+    font-size: 0.95rem;
+  }
+
+  /* Subtitle */
+  .subtitle {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    padding: 0 0.4rem;
+  }
+
+  /* 简介文字 */
+  .intro-text > p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    padding: 0 0.3rem;
+  }
+
+  /* Badges */
+  .quick-badges {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .quick-badges .badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.55rem;
+  }
+}
+
+
+/* =========================
+   Works Preview 手机端
+   ========================= */
+@media (max-width: 480px) {
+
+
+
+  /* Works 卡片 */
+  #works .work-card {
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+  }
+
+  /* Works 卡片图标 */
+  #works .work-card > i {
+    font-size: 1.1rem;
+  }
+
+  /* Works 卡片标题 */
+  #works .work-card h4 {
+    font-size: 0.88rem;
+  }
+
+  /* Works 卡片正文 */
+  #works .work-card p {
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+}
+
+/* =========================
+   Education 手机端
+   ========================= */
+@media (max-width: 480px) {
+
+ 
+
+  /* 时间线标题 */
+  #education .timeline-item h4 {
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+
+  /* 时间线正文 */
+  #education .timeline-item p {
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+
+  /* 成绩徽章 */
+  #education .badge {
+    font-size: 0.72rem;
+    padding: 0.3rem 0.55rem;
+  }
+
+  /* 网格改为单列 */
+  #education .grid-2col {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  /* 信息块内边距 */
+  #education .info-block {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+}
 }
