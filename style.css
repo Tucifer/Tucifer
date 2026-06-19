@@ -972,4 +972,38 @@ section,
     border-radius: 14px;
   }
 }
+
+/* =========================
+   手机端导航 · 吸顶 + 缩小
+   ========================= */
+@media (max-width: 480px) {
+
+  nav {
+    position: sticky;        /* ✅ 只在手机生效 */
+    top: 0;
+    z-index: 9999;
+    padding: 0.4rem 0.6rem;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: all 0.35s ease;
+  }
+
+  nav.shrink {
+    padding: 0.25rem 0.5rem;
+  }
+
+  nav.shrink .logo {
+    font-size: 0.85rem;
+  }
+
+  nav.shrink .nav-links a {
+    font-size: 0.6rem;
+  }
+
+  nav.shrink .nav-links a i {
+    font-size: 0.85rem;
+  }
+}
+
 }
