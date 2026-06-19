@@ -1006,4 +1006,32 @@ section,
   }
 }
 
+@media (max-width: 480px) {
+
+  /* 翻译按钮 */
+  .lang-switch {
+    position: fixed;
+    top: 1.3rem;
+    right: 1.9rem;
+    z-index: 10002;   /* ✅ 必须高于 nav 的 9999 */
+    
+    font-size: 0.75rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 999px;
+
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+
+    transition: all 0.35s ease;
+  }
+
+  .lang-switch.shrink {
+    top: 0.3rem;
+     right: 2rem;
+    font-size: 0.68rem;
+    padding: 0.15rem 0.4rem;
+  }
+}
+
 }
