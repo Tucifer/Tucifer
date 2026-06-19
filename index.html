@@ -1121,5 +1121,23 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 </script>
 
+<script>
+const nav = document.querySelector('nav');
+const langSwitch = document.querySelector('.lang-switch');
+const isMobile = window.matchMedia('(max-width: 480px)');
+
+window.addEventListener('scroll', () => {
+  if (!isMobile.matches) return; // ✅ 桌面什么都不做
+
+  if (window.scrollY > 80) {
+    nav.classList.add('shrink');
+    langSwitch.classList.add('shrink');
+  } else {
+    nav.classList.remove('shrink');
+    langSwitch.classList.remove('shrink');
+  }
+});
+</script>
+
 </body>
 </html>
