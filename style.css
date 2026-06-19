@@ -113,20 +113,48 @@ nav {
 }
 
 @media (max-width: 480px) {
-      .nav-links {
-    gap: 0.4rem;
-    justify-content: center;
+
+  nav {
+    padding: 0.4rem 0.6rem;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* ✅ 强制 3 列 */
+    gap: 0.35rem 0.4rem;
+    margin-top: 0.4rem;
+  }
+
+  .nav-links li {
+    min-width: 0;
   }
 
   .nav-links a {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.35rem 0.2rem;
+    font-size: 0.68rem;
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-links a i {
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
   }
 
   .nav-links a span {
-    display: inline;   /* ✅ 显示文字 */
+    display: block;          /* ✅ 防止 inline 撑高 */
+    transform: scale(0.95); /* ✅ 英文略微压缩 */
   }
-    }
+}
 
 /* ===== 英雄区 ===== */
 .hero {
