@@ -112,6 +112,22 @@ nav {
   text-decoration: none;
 }
 
+@media (max-width: 480px) {
+      .nav-links {
+    gap: 0.4rem;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .nav-links a span {
+    display: inline;   /* ✅ 显示文字 */
+  }
+    }
+
 /* ===== 英雄区 ===== */
 .hero {
   display: flex;
