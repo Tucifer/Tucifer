@@ -7,7 +7,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Privacy Policy · Tucifer Tian</title>
-  <link rel="icon" href="https://img.icons8.com/?size=100&id=BU7Clwq5bV9D&format=png&color=000000" type="image/png">
+  <link rel="icon"  type="image/png" href="https://img.icons8.com/?size=100&id=WiL3D7DyKm5F&format=png&color=000000">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -380,21 +380,49 @@
     font-size: 0.9rem;     /* 箭头图标也相应缩小 */
   }
 }
-    @media (max-width: 480px) {
-      .nav-links {
-    gap: 0.4rem;
-    justify-content: center;
+ @media (max-width: 480px) {
+
+  nav {
+    padding: 0.4rem 0.6rem;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* ✅ 强制 3 列 */
+    gap: 0.35rem 0.4rem;
+    margin-top: 0.4rem;
+  }
+
+  .nav-links li {
+    min-width: 0;
   }
 
   .nav-links a {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.35rem 0.2rem;
+    font-size: 0.68rem;
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-links a i {
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
   }
 
   .nav-links a span {
-    display: inline;   /* ✅ 显示文字 */
+    display: block;          /* ✅ 防止 inline 撑高 */
+    transform: scale(0.95); /* ✅ 英文略微压缩 */
   }
-    }
+}
 
 /* ===============================
    隐私政策页 · 手机端强制缩放
@@ -460,6 +488,8 @@
     height: 2px;
     margin-bottom: 0.45rem;
   }
+
+  
 }
 
     
@@ -756,7 +786,7 @@
     <footer>
       <div class="footer-links">
         <a href="index.html"><i class="fas fa-home"></i> <span data-en="Home" data-zh-hant="主頁" data-zh-hans="主页">Home</span></a>
-        <a href="privacy policy.html"><i class="fas fa-shield-alt"></i> <span data-en="Privacy Policy" data-zh-hant="隱私政策" data-zh-hans="隐私政策">Privacy Policy</span></a>
+        <a href="xiaokui.html"><i class="fas fa-paw"></i> <span data-en="Animal Protection" data-zh-hant="動物保護宣言" data-zh-hans="动物保护宣言">Animal Protection</span></a>
         <a href="index.html#Contact"><i class="fas fa-envelope"></i> <span data-en="Contact" data-zh-hant="聯絡" data-zh-hans="联络">Contact</span></a>
       </div>
       <p>© 2026 TIAN JIAHUI.<span data-en="All rights reserved." data-zh-hant="保留所有權利。" data-zh-hans="保留所有权利。">All rights reserved.</span></p>
@@ -770,6 +800,8 @@
   </div>
 
   <script>
+
+
     // 回到顶部
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
