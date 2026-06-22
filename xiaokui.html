@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Every life deserves respect · Tucifer Tian</title>
+
+  <link rel="icon"  type="image/png" href="https://img.icons8.com/?size=100&id=TqOgQyUuypPY&format=png&color=000000">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* ===== 全局 ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+      background: #f5f9ff;
+      color: #1a2b4c;
+      line-height: 1.7;
+      transition: all 0.2s ease;
+    }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1.8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+    }
+
+    /* ===== 语言切换 ===== */
+    .lang-switch {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid #c6defa;
+      border-radius: 40px;
+      padding: 0.5rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      color: #1f5680;
+      font-size: 0.9rem;
+      box-shadow: 0 8px 20px rgba(18, 52, 106, 0.08);
+      transition: all 0.3s;
+    }
+    .lang-switch:hover {
+      background: #ffffff;
+      box-shadow: 0 12px 28px rgba(18, 52, 106, 0.15);
+    }
+    .lang-switch i {
+      color: #1f5680;
+    }
+
+    /* ===== 导航 ===== */
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(16px);
+      border-radius: 80px;
+      padding: 0.8rem 2.4rem;
+      box-shadow: 0 12px 32px rgba(18, 52, 106, 0.08), 0 2px 8px rgba(0, 32, 64, 0.04);
+      border: 1px solid rgba(200, 215, 240, 0.5);
+      position: sticky;
+      top: 1.2rem;
+      z-index: 50;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 550;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #0b2b5e, #1f5680);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1f3a5f;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+      padding: 0.4rem 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      white-space: nowrap;
+    }
+    .nav-links a i {
+      font-size: 0.85rem;
+      color: #2b5f8a;
+    }
+    .nav-links a:hover {
+      border-bottom-color: #1f5680;
+      color: #0a2540;
+      text-decoration: none;
+    }
+
+    /* ===== 面包屑 ===== */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: #6b8bb5;
+      padding: 0.2rem 0.4rem;
+    }
+    .breadcrumb a {
+      color: #2b5f8a;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .breadcrumb a:hover {
+      color: #1f5680;
+      text-decoration: underline;
+    }
+    .breadcrumb .separator {
+      color: #b0c4de;
+      font-size: 0.75rem;
+    }
+    .breadcrumb .current {
+      color: #1a2b4c;
+      font-weight: 500;
+    }
+
+  .animal-mission {
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 2rem 2.2rem;
+      background: rgba(255,255,255,0.95);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      line-height: 1.9;
+    }
+
+    /* ===== 标题区域（整体居中） ===== */
+    .mission-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .title-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .title-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mission-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #333;
+      margin: 0;
+    }
+
+    /* ===== 正文（加大） ===== */
+    .mission-body {
+      font-size: 1.1rem;
+      color: #555;
+      margin: 0 0 1.8rem 0;
+      text-align: justify;
+    }
+
+    /* ===== 底部 Logo 区域 ===== */
+    .partner-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #eee;
+    }
+
+    .logo-placeholder {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-placeholder img {
+      max-height: 50px;
+      max-width: 50px;
+      object-fit: contain;
+    }
+
+    /* ===== 占位文字 ===== */
+    .placeholder-text {
+      color: #aaa;
+      font-size: 0.7rem;
+    }
+
+    /* ===== 页脚 ===== */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem 1.5rem;
+      color: #8aa5c0;
+      font-size: 0.82rem;
+      border-top: 1px solid rgba(200, 215, 240, 0.4);
+      margin-top: 1rem;
+    }
+    footer a {
+      color: #1f5680;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.6rem;
+      flex-wrap: wrap;
+    }
+    footer .footer-links a {
+      font-size: 0.85rem;
+    }
+
+    /* ===== 回到顶部 ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1f5680, #0b2b5e);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 24px rgba(31, 86, 128, 0.3);
+      cursor: pointer;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(31, 86, 128, 0.4);
+    }
+
+    /* ===== 响应式 ===== */
+
+    @media (max-width: 750px) {
+  .container {
+    padding: 1rem;
+  }
+  nav {
+    flex-direction: column;
+    gap: 0.8rem;
+    border-radius: 2rem;
+    padding: 1rem 1.5rem;
+  }
+  .nav-links {
+    gap: 1rem;
+  }
+     
+    }
+
+
+    @media (max-width: 480px) {
+  /* 回到顶部按钮手机端缩小 */
+  .back-to-top {
+    width: 36px;          /* 原来 48px → 现在 36px */
+    height: 36px;
+    bottom: 1rem;          /* 离底部近一点，更紧凑 */
+    right: 1rem;           /* 离右边近一点 */
+    font-size: 0.9rem;     /* 箭头图标也相应缩小 */
+  }
+}
+ @media (max-width: 480px) {
+
+  nav {
+    padding: 0.4rem 0.6rem;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* ✅ 强制 3 列 */
+    gap: 0.35rem 0.4rem;
+    margin-top: 0.4rem;
+  }
+
+  .nav-links li {
+    min-width: 0;
+  }
+
+  .nav-links a {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.35rem 0.2rem;
+    font-size: 0.68rem;
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-links a i {
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .nav-links a span {
+    display: block;          /* ✅ 防止 inline 撑高 */
+    transform: scale(0.95); /* ✅ 英文略微压缩 */
+  }
+}
+
+
+  /* ===== 分隔线 ===== */
+  .divider {
+    width: 36px;
+    height: 2px;
+    margin-bottom: 0.45rem;
+  }
+
+
+  @media (max-width: 600px) {
+      .animal-mission {
+        margin: 1rem auto;
+        padding: 1.2rem 1rem;
+        border-radius: 8px;
+      }
+
+      .mission-header {
+        gap: 0.5rem;
+      }
+
+      .title-logo {
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+      }
+
+      .mission-title {
+        font-size: 1rem;
+      }
+
+      .mission-body {
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+
+      .partner-logos {
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .logo-placeholder {
+        width: 90px;
+        height: 42px;
+        border-radius: 6px;
+      }
+
+      .logo-placeholder img {
+        max-height: 32px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .animal-mission {
+        padding: 1rem 0.8rem;
+      }
+
+      .mission-header {
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .mission-title {
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      .mission-body {
+        font-size: 0.85rem;
+      }
+
+      .partner-logos {
+        gap: 0.8rem;
+      }
+
+      .logo-placeholder {
+        width: 80px;
+        height: 38px;
+      }
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <!-- 语言切换按钮 -->
+  <div class="lang-switch" id="langToggle">
+    <i class="fas fa-globe"></i>
+    <span class="lang-text">繁</span>
+  </div>
+
+  <div class="container">
+
+    <!-- 导航栏 -->
+    <nav>
+      <div class="logo"><i class="fas fa-search"></i> Tucifer</div>
+      <ul class="nav-links">
+        <li>
+          <a href="index.html#home">
+            <i class="fas fa-home"></i>
+            <span data-en="Home" data-zh-hant="主頁" data-zh-hans="主页">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html#education">
+            <i class="fas fa-graduation-cap"></i>
+            <span data-en="Education" data-zh-hant="教育背景" data-zh-hans="教育背景">Education</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html#expertise">
+            <i class="fas fa-brain"></i>
+            <span data-en="Academic" data-zh-hant="學術專長" data-zh-hans="学术专长">Academic</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html#experience">
+            <i class="fas fa-briefcase"></i>
+            <span data-en="Work Experience" data-zh-hant="工作經驗" data-zh-hans="工作经验">Experience</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html#awards">
+            <i class="fas fa-trophy"></i>
+            <span data-en="Awards" data-zh-hant="獲獎與認證" data-zh-hans="获奖与认证">Awards</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html#works">
+            <i class="fas fa-palette"></i>
+            <span data-en="Project" data-zh-hant="項目展示" data-zh-hans="项目展示">Works</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html#service">
+            <i class="fas fa-hand-holding-heart"></i>
+            <span data-en="Service" data-zh-hant="社會服務" data-zh-hans="社会服务">Service</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html#bulletin">
+            <i class="fas fa-bullhorn"></i>
+            <span data-en="Announcements" data-zh-hant="公告欄" data-zh-hans="公告栏">Announcements</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html#Contact">
+            <i class="fas fa-phone"></i>
+            <span data-en="Contact" data-zh-hant="聯絡" data-zh-hans="联络">Contact</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- 面包屑 -->
+    <div class="breadcrumb">
+      <a href="index.html"><i class="fas fa-home"></i> <span data-en="Home" data-zh-hant="主頁" data-zh-hans="主页">Home</span></a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <span class="current" data-en="Every life matters" data-zh-hant="每個生命都重要" data-zh-hans="每一个生命都重要">Every life matters</span>
+    </div>
+
+    <!-- 页面标题 -->
+   
+
+    <div class="animal-mission">
+
+    <!-- 标题左侧 Logo + 文字 -->
+    <div class="mission-header">
+      <!-- 标题左侧 Logo（替换 src 为你自己的图片链接） -->
+      <div class="title-logo">
+        <img src="https://img.icons8.com/?size=100&id=TqOgQyUuypPY&format=png&color=000000" alt="Logo">
+      </div>
+
+      <h3 class="mission-title">
+        <span data-en="Every life deserves respect" data-zh-hant="每個生命都值得被尊重" data-zh-hans="每一个生命都值得被尊重">
+          Every life deserves respect.
+        </span>
+      </h3>
+    </div>
+
+    <!-- 正文 -->
+    <p class="mission-body" data-en="
+      I believe animals are not possessions, but co-inhabitants of our planet. From reducing single-use plastics to supporting adoption over purchase, from protecting wildlife habitats to advocating for sustainable living — every small action reshapes their future.
+    " data-zh-hant="
+      我相信動物並非人類的財產，而是與我們共享這顆星球的同伴。從減少一次性塑料到支持領養而非購買，從保護野生動物棲息地到倡導可持續生活方式——每一個微小的行動都在重塑牠們的未來。
+    " data-zh-hans="
+      我相信动物并非人类的财产，而是与我们共享这颗星球的同伴。从减少一次性塑料到支持领养而非购买，从保护野生动物栖息地到倡导可持续生活方式——每一个微小的行动都在重塑它们的未来。
+    ">
+      I believe animals are not possessions, but co-inhabitants of our planet. From reducing single-use plastics to supporting adoption over purchase, from protecting wildlife habitats to advocating for sustainable living — every small action reshapes their future.
+    </p>
+
+    <!-- 底部三个 Logo 居中 -->
+    <div class="partner-logos">
+      <div class="logo-placeholder">
+        <img src="https://img.icons8.com/?size=100&id=8CQiYMYllkAz&format=png&color=000000" alt="Partner Logo 1">
+      </div>
+      <div class="logo-placeholder">
+        <img src="https://img.icons8.com/?size=100&id=TdgoFB7uKPlI&format=png&color=000000" alt="Partner Logo 2">
+      </div>
+      <div class="logo-placeholder">
+        <img src="https://img.icons8.com/?size=100&id=9EDjxi3YhrXq&format=png&color=000000" alt="Partner Logo 3">
+      </div>
+    </div>
+
+  </div>
+
+    <!-- 页脚 -->
+    <footer>
+      <div class="footer-links">
+        <a href="index.html"><i class="fas fa-home"></i> <span data-en="Home" data-zh-hant="主頁" data-zh-hans="主页">Home</span></a>
+        <a href="privacy policy.html"><i class="fas fa-shield-alt"></i> <span data-en="Privacy Policy" data-zh-hant="隱私政策" data-zh-hans="隐私政策">Privacy Policy</span></a>
+        <a href="index.html#Contact"><i class="fas fa-envelope"></i> <span data-en="Contact" data-zh-hant="聯絡" data-zh-hans="联络">Contact</span></a>
+      </div>
+      <p>© 2026 TIAN JIAHUI.<span data-en="All rights reserved." data-zh-hant="保留所有權利。" data-zh-hans="保留所有权利。">All rights reserved.</span></p>
+    </footer>
+
+  </div><!-- end container -->
+
+  <!-- 回到顶部 -->
+  <div class="back-to-top" id="backToTop" title="Back to Top">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <script>
+    // 回到顶部
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 语言切换：en → 繁體 → 简体 → en 循环
+    const langToggle = document.getElementById('langToggle');
+    const langText = langToggle.querySelector('.lang-text');
+    let langIndex = 0; // 0=English(default), 1=繁體中文, 2=简体中文
+    const langLabels = ['繁', '简', 'En'];
+
+    langToggle.addEventListener('click', () => {
+      langIndex = (langIndex + 1) % 3;
+      const attr = langIndex === 0 ? 'data-en' : (langIndex === 1 ? 'data-zh-hant' : 'data-zh-hans');
+      langText.textContent = langLabels[langIndex];
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const targetAttr = el.getAttribute(attr);
+        if (targetAttr) {
+          el.innerHTML = targetAttr;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
