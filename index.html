@@ -44,7 +44,158 @@ TIAN JIAHUI EDUHK，
   <link rel="stylesheet" href="./style.css?v=3">
 </head>
 
+<style>
 
+
+
+/* ----- 英雄区容器 ----- */
+.hero {
+  display: flex;                /* 开启弹性盒子布局，让子元素排成一行 */
+  flex-wrap: wrap;             /* 允许子元素换行，屏幕太窄时自动折行 */
+  align-items: center;         /* 子元素在垂直方向上居中对齐 */
+  gap: 2.5rem;                /* 子元素之间的间距为 2.5rem */
+  background: #ffffff;         /* 背景色为白色 */
+  border-radius: 2.8rem;      /* 圆角大小，让容器四角变圆 */
+  padding: 2.4rem 2.5rem;     /* 内边距：上下 2.4rem，左右 2.5rem */
+  box-shadow: 0 30px 50px -20px rgba(20, 60, 120, 0.15);  /* 外阴影：向下偏移30px，模糊50px，扩散-20px，蓝色半透明 */
+  border: 1px solid #e6f0fa;  /* 边框：1px 粗，浅蓝色实线 */
+  background: linear-gradient(105deg, #ffffff 0%, #f3f9ff 100%);  /* 渐变背景：从左上到右下，白色渐变到浅蓝色 */
+  position: relative;          /* 相对定位，为内部绝对定位元素提供参照 */
+  justify-content: space-between;  /* 子元素两端对齐：左边一个，右边一个，中间留空 */
+}
+
+/* ----- 动画容器 - 靠右 ----- */
+.hero-loader {
+  flex: 0 0 auto;            /* 弹性盒子不伸缩：不放大(0)不缩小(0)，宽度自动 */
+  margin-left: auto;          /* 左边距自动，把自身推到最右边 */
+}
+
+/* ===== 加载动画外层容器 ===== */
+.loader-wrapper {
+  position: relative;         /* 相对定位，作为内部 loader 绝对定位的参照物 */
+  display: flex;              /* 开启弹性盒子布局 */
+  align-items: center;        /* 子元素（字母）垂直居中 */
+  justify-content: center;    /* 子元素（字母）水平居中 */
+  width: 140px;              /* 容器宽度 130px */
+  height: 140px;             /* 容器高度 130px */
+  font-family: "Inter", sans-serif;  /* 字体：优先使用 Inter，备选系统无衬线字体 */
+  font-size: 1.2em;            /* 字体大小：继承父级大小 */
+  font-weight: 300;          /* 字体粗细：300（细体） */
+  color: #071023;           /* 文字颜色：深蓝色 */
+  border-radius: 50%;        /* 圆角 50%，变成正圆形 */
+  background-color: transparent;  /* 背景完全透明 */
+  user-select: none;          /* 禁止用户选中文字（防止拖动时选中） */
+}
+
+/* ----- 旋转光晕（圆形光环） ----- */
+.loader {
+  position: absolute;         /* 绝对定位，相对于 .loader-wrapper 定位 */
+  top: 0;                    /* 紧贴父容器顶部 */
+  left: 0;                   /* 紧贴父容器左侧 */
+  width: 100%;               /* 宽度占满父容器（100%） */
+  aspect-ratio: 1 / 1;       /* 宽高比 1:1，保持正圆形 */
+  border-radius: 50%;        /* 圆角 50%，变成正圆形 */
+  background-color: transparent;  /* 背景透明 */
+  animation: loader-rotate 2s linear infinite;  /* 动画：使用 loader-rotate 关键帧，持续2秒，匀速，无限循环 */
+  z-index: 0;                /* 层级为0，放在字母下面（字母 z-index:1） */
+}
+
+/* ----- 旋转光晕的动画关键帧 ----- */
+@keyframes loader-rotate {
+  0% {                       /* 动画开始（0% 时刻） */
+    transform: rotate(90deg);  /* 旋转 90 度（起始角度） */
+    box-shadow:               /* 内阴影（从内部发光） */
+      0 10px 20px 0 #fff inset,    /* 白色光晕：向下偏移10px，模糊20px */
+      0 20px 30px 0 #ba92e4 inset, /* 紫色光晕：向下偏移20px，模糊30px */
+      0 60px 60px 0 #9b8bd9 inset; /* 深紫色光晕：向下偏移60px，模糊60px */
+  }
+  50% {                      /* 动画中间（50% 时刻） */
+    transform: rotate(270deg);  /* 旋转到 270 度 */
+    box-shadow:               /* 阴影颜色变化 */
+      0 10px 20px 0 #fff inset,    /* 白色保持不变 */
+      0 20px 10px 0 #edcad5 inset, /* 变为粉红色 */
+      0 40px 60px 0 #9f91d7 inset; /* 变为深紫蓝色 */
+  }
+  100% {                     /* 动画结束（100% 时刻） */
+    transform: rotate(450deg);  /* 旋转到 450 度（= 360 + 90，比起点多一圈） */
+    box-shadow:               /* 回到起始颜色 */
+      0 10px 20px 0 #fff inset,    /* 白色光晕：向下偏移10px，模糊20px */
+      0 20px 30px 0 #ba92e4 inset, /* 紫色光晕：向下偏移20px，模糊30px */
+      0 60px 60px 0 #9b8bd9 inset; /* 深紫色光晕：向下偏移60px，模糊60px */
+  }
+}
+
+/* ----- 每个字母的样式 ----- */
+.loader-letter {
+  display: inline-block;      /* 行内块级元素：既保持行内排列，又能设置宽高和变形 */
+  opacity: 0.4;              /* 透明度 40%（半透明） */
+  transform: translateY(0);   /* 垂直偏移为 0（初始位置） */
+  animation: loader-letter-anim 2s infinite;  /* 动画：跳动效果，持续2秒，无限循环 */
+  z-index: 1;                /* 层级为1，放在光晕（z-index:0）的上面 */
+  border-radius: 50ch;       /* 超大圆角（几乎变成胶囊形状） */
+  border: none;              /* 无边框 */
+  color: #1a2b4c;           /* 文字颜色：深蓝色 */
+}
+
+/* ----- 每个字母的动画延迟（依次跳动） ----- */
+.loader-letter:nth-child(1) { animation-delay: 0s; }     /* 第1个字母 G：延迟 0 秒 */
+.loader-letter:nth-child(2) { animation-delay: 0.1s; }   /* 第2个字母 e：延迟 0.1 秒 */
+.loader-letter:nth-child(3) { animation-delay: 0.2s; }   /* 第3个字母 n：延迟 0.2 秒 */
+.loader-letter:nth-child(4) { animation-delay: 0.3s; }   /* 第4个字母 e：延迟 0.3 秒 */
+.loader-letter:nth-child(5) { animation-delay: 0.4s; }   /* 第5个字母 r：延迟 0.4 秒 */
+.loader-letter:nth-child(6) { animation-delay: 0.5s; }   /* 第6个字母 a：延迟 0.5 秒 */
+.loader-letter:nth-child(7) { animation-delay: 0.6s; }   /* 第7个字母 t：延迟 0.6 秒 */
+
+
+/* ----- 字母跳动动画的关键帧 ----- */
+@keyframes loader-letter-anim {
+  0%, 100% {                /* 动画开始和结束时（0% 和 100%） */
+    opacity: 0.4;           /* 透明度 40%（半透明） */
+    transform: translateY(0); /* 保持在原位（不偏移） */
+  }
+  20% {                     /* 动画进行到 20% 时（弹跳到最高点） */
+    opacity: 1;             /* 透明度 100%（完全不透明，变亮） */
+    transform: scale(1.15); /* 放大到 1.15 倍 */
+  }
+  40% {                     /* 动画进行到 40% 时（下落回弹） */
+    opacity: 0.7;           /* 透明度 70% */
+    transform: translateY(0); /* 回到原位 */
+  }
+}
+
+/* =========================
+   手机端适配（屏幕宽度 ≤ 750px）
+   ========================= */
+@media (max-width: 750px) {
+  .hero {
+    flex-direction: column;    /* 改为纵向排列（上下排列） */
+    text-align: center;       /* 文字居中 */
+    padding: 1.5rem 1rem;     /* 内边距缩小：上下1.5rem，左右1rem */
+  }
+
+  .hero-loader {
+    margin-left: 0;           /* 取消左边距（不再靠右） */
+    margin-top: 0.5rem;       /* 添加上边距，和上方内容隔开 */
+  }
+
+  .loader-wrapper {
+    width: 80px;            /* 容器宽度缩小到 100px */
+    height: 80px;           /* 容器高度缩小到 100px */
+    font-size: 0.8em;        /* 字体缩小到 0.8 倍 */
+  }
+}
+
+/* =========================
+   小屏手机适配（屏幕宽度 ≤ 480px）
+   ========================= */
+@media (max-width: 480px) {
+  .loader-wrapper {
+    width: 100px;             /* 容器宽度缩小到 80px */
+    height: 100px;            /* 容器高度缩小到 80px */
+    font-size: 0.6em;        /* 字体缩小到 0.6 倍 */
+  }
+}
+</style>
 
 <body>
 
@@ -222,7 +373,21 @@ TIAN JIAHUI EDUHK，
   </a>
 </div>
       </div>
+
+      <div class="hero-loader">
+    <div class="loader-wrapper">
+      <span class="loader-letter">W</span>
+      <span class="loader-letter">e</span>
+      <span class="loader-letter">l</span>
+      <span class="loader-letter">c</span>
+      <span class="loader-letter">o</span>
+      <span class="loader-letter">m</span>
+      <span class="loader-letter">e</span>
+      <div class="loader"></div>
     </div>
+  </div>
+    </div>
+    
 
     <!-- 首页卡片 -->
 <div class="home-grid">
