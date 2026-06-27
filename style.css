@@ -224,6 +224,11 @@ nav {
   font-weight: 500;
 }
 
+/* From Uiverse.io by dexter-st */ 
+/* ===== 加载动画容器 ===== */
+
+
+
 /* ===== 首页卡片 ===== */
 .home-grid {
   display: grid;
@@ -1033,5 +1038,109 @@ section,
     padding: 0.15rem 0.4rem;
   }
 }
+
+/* ===== 汉堡按钮 ===== */
+.nav-toggle {
+  display: none; /* 桌面隐藏 */
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #1f5680;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  border-radius: 12px;
+  transition: background 0.25s;
+}
+.nav-toggle:hover {
+  background: rgba(31, 86, 128, 0.08);
+}
+
+@media (max-width: 480px) {
+
+  /* ✅ 显示汉堡按钮 */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* ✅ nav 布局 */
+  nav {
+    flex-wrap: wrap;
+    border-radius: 1.5rem;
+    padding: 0.5rem 1rem;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  /* ===== 菜单默认隐藏（丝滑动画） ===== */
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 0.35rem 0.4rem;
+    margin-top: 0;
+    padding: 0;
+    border-top: none;
+
+    /* ✅ 动画关键 */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: max-height 0.4s ease,
+                opacity 0.35s ease,
+                transform 0.35s ease,
+                padding 0.35s ease,
+                margin-top 0.35s ease;
+  }
+
+  /* ✅ 展开态：九宫格 */
+  .nav-links.open {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 0.5rem;
+    padding: 0.5rem 0 0.3rem;
+    border-top: 1px solid #dce9fa;
+  }
+
+  .nav-links li {
+    min-width: 0;
+  }
+
+  .nav-links a {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0.2rem;
+    font-size: 0.72rem;
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom: none;
+    border-radius: 12px;
+    transition: background 0.2s;
+  }
+
+  .nav-links a i {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+    color: #1f5680;
+  }
+
+  .nav-links a span {
+    display: block;
+    transform: scale(0.95);
+  }
+
+  .nav-links a:hover {
+    background: rgba(31, 86, 128, 0.06);
+    text-decoration: none;
+  }
+}
+
 
 }
