@@ -469,6 +469,11 @@ TIAN JIAHUI EDUHK，
     <!-- 导航栏 -->
     <nav>
       <div class="logo"><i class="fas fa-search"></i> </i> Tucifer</div>
+<!-- 汉堡菜单按钮（仅手机端显示） -->
+<button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+  <i class="fas fa-bars"></i>
+</button>
+
       <ul class="nav-links">
   <li>
     <a href="#home">
@@ -1653,6 +1658,33 @@ window.addEventListener('scroll', () => {
     langSwitch.classList.remove('shrink');
   }
 });
+
+
+
+/* ===== 汉堡菜单：点击展开/收起 + 自动切换图标 ===== */
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.querySelector('.nav-links');
+
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+
+  // 切换图标 ☰ ↔ ✕
+  const icon = navToggle.querySelector('i');
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-xmark');
+});
+
+/* ===== 点击导航项后自动收起菜单 ===== */
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    const icon = navToggle.querySelector('i');
+    icon.classList.add('fa-bars');
+    icon.classList.remove('fa-xmark');
+  });
+});
+
+
 </script>
 
 </body>
