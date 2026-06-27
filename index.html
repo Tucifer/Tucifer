@@ -47,154 +47,413 @@ TIAN JIAHUI EDUHK，
 <style>
 
 
+/* ============================================
+   Hero 区 - 左头像 | 中文字 | 右蜡烛
+   ============================================ */
 
-/* ----- 英雄区容器 ----- */
 .hero {
-  display: flex;                /* 开启弹性盒子布局，让子元素排成一行 */
-  flex-wrap: wrap;             /* 允许子元素换行，屏幕太窄时自动折行 */
-  align-items: center;         /* 子元素在垂直方向上居中对齐 */
-  gap: 2.5rem;                /* 子元素之间的间距为 2.5rem */
-  background: #ffffff;         /* 背景色为白色 */
-  border-radius: 2.8rem;      /* 圆角大小，让容器四角变圆 */
-  padding: 2.4rem 2.5rem;     /* 内边距：上下 2.4rem，左右 2.5rem */
-  box-shadow: 0 30px 50px -20px rgba(20, 60, 120, 0.15);  /* 外阴影：向下偏移30px，模糊50px，扩散-20px，蓝色半透明 */
-  border: 1px solid #e6f0fa;  /* 边框：1px 粗，浅蓝色实线 */
-  background: linear-gradient(105deg, #ffffff 0%, #f3f9ff 100%);  /* 渐变背景：从左上到右下，白色渐变到浅蓝色 */
-  position: relative;          /* 相对定位，为内部绝对定位元素提供参照 */
-  justify-content: space-between;  /* 子元素两端对齐：左边一个，右边一个，中间留空 */
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 2.5rem;
+  background: linear-gradient(105deg, #ffffff 0%, #f3f9ff 100%);
+  border-radius: 2.8rem;
+  padding: 2.4rem 2.5rem;
+  box-shadow: 0 30px 50px -20px rgba(20, 60, 120, 0.15);
+  border: 1px solid #e6f0fa;
+  position: relative;
 }
 
-/* ----- 动画容器 - 靠右 ----- */
+/* 左侧头像 */
+.photo-frame {
+  flex: 0 0 auto;
+}
+
+/* 中间文字 - 撑满剩余空间 */
+.intro-text {
+  flex: 1 !important;
+  min-width: 260px;
+}
+
+/* 右侧蜡烛容器 */
 .hero-loader {
-  flex: 0 0 auto;            /* 弹性盒子不伸缩：不放大(0)不缩小(0)，宽度自动 */
-  margin-left: auto;          /* 左边距自动，把自身推到最右边 */
+  flex: 0 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-/* ===== 加载动画外层容器 ===== */
-.loader-wrapper {
-  position: relative;         /* 相对定位，作为内部 loader 绝对定位的参照物 */
-  display: flex;              /* 开启弹性盒子布局 */
-  align-items: center;        /* 子元素（字母）垂直居中 */
-  justify-content: center;    /* 子元素（字母）水平居中 */
-  width: 140px;              /* 容器宽度 130px */
-  height: 140px;             /* 容器高度 130px */
-  font-family: "Inter", sans-serif;  /* 字体：优先使用 Inter，备选系统无衬线字体 */
-  font-size: 1.2em;            /* 字体大小：继承父级大小 */
-  font-weight: 300;          /* 字体粗细：300（细体） */
-  color: #071023;           /* 文字颜色：深蓝色 */
-  border-radius: 50%;        /* 圆角 50%，变成正圆形 */
-  background-color: transparent;  /* 背景完全透明 */
-  user-select: none;          /* 禁止用户选中文字（防止拖动时选中） */
+/* 蜡烛外层 */
+.scene-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 100px;
 }
 
-/* ----- 旋转光晕（圆形光环） ----- */
-.loader {
-  position: absolute;         /* 绝对定位，相对于 .loader-wrapper 定位 */
-  top: 0;                    /* 紧贴父容器顶部 */
-  left: 0;                   /* 紧贴父容器左侧 */
-  width: 100%;               /* 宽度占满父容器（100%） */
-  aspect-ratio: 1 / 1;       /* 宽高比 1:1，保持正圆形 */
-  border-radius: 50%;        /* 圆角 50%，变成正圆形 */
-  background-color: transparent;  /* 背景透明 */
-  animation: loader-rotate 2s linear infinite;  /* 动画：使用 loader-rotate 关键帧，持续2秒，匀速，无限循环 */
-  z-index: 0;                /* 层级为0，放在字母下面（字母 z-index:1） */
+/* 核心修复：取消 absolute 定位 */
+.wrapper {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  transform: scale(0.85) !important;
 }
 
-/* ----- 旋转光晕的动画关键帧 ----- */
-@keyframes loader-rotate {
-  0% {                       /* 动画开始（0% 时刻） */
-    transform: rotate(90deg);  /* 旋转 90 度（起始角度） */
-    box-shadow:               /* 内阴影（从内部发光） */
-      0 10px 20px 0 #fff inset,    /* 白色光晕：向下偏移10px，模糊20px */
-      0 20px 30px 0 #ba92e4 inset, /* 紫色光晕：向下偏移20px，模糊30px */
-      0 60px 60px 0 #9b8bd9 inset; /* 深紫色光晕：向下偏移60px，模糊60px */
+
+
+/* 蜡烛组 */
+.candles {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 250px;
+  height: 150px;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* 蜡烛1 */
+.candle1 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 35px;
+  height: 100px;
+  background: #fff;
+  border: 3px solid #673c63;
+  border-bottom: 0px;
+  border-radius: 3px;
+  transform-origin: center right;
+  transform: translate(60%, -25%);
+  box-shadow: -2px 0px 0px #95c6f2 inset;
+  animation: expand-body 3s infinite linear;
+}
+
+.candle1__stick {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  width: 3px;
+  height: 15px;
+  background: #673c63;
+  border-radius: 8px;
+  transform: translate(-50%, -100%);
+}
+
+.candle1__eyes {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  width: 35px;
+  height: 30px;
+  transform: translate(-50%, 0%);
+}
+
+.candle1__eyes-one {
+  position: absolute;
+  left: 30%;
+  top: 20%;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background: #673c63;
+  transform: translate(-70%, 0%);
+  animation: blink-eyes 3s infinite linear;
+}
+
+.candle1__eyes-two {
+  position: absolute;
+  left: 70%;
+  top: 20%;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background: #673c63;
+  transform: translate(-70%, 0%);
+  animation: blink-eyes 3s infinite linear;
+}
+
+.candle1__mouth {
+  position: absolute;
+  left: 40%;
+  top: 20%;
+  width: 0px;
+  height: 0px;
+  border-radius: 20px;
+  background: #673c63;
+  transform: translate(-50%, -50%);
+  animation: uff 3s infinite linear;
+}
+
+/* 蜡烛烟雾 */
+.candle__smoke-one {
+  position: absolute;
+  left: 30%;
+  top: 50%;
+  width: 30px;
+  height: 3px;
+  background: grey;
+  transform: translate(-50%, -50%);
+  animation: move-left 3s infinite linear;
+}
+
+.candle__smoke-two {
+  position: absolute;
+  left: 30%;
+  top: 40%;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: grey;
+  transform: translate(-50%, -50%);
+  animation: move-top 3s infinite linear;
+}
+
+/* 蜡烛2 */
+.candle2 {
+  position: absolute;
+  left: 20%;
+  top: 65%;
+  width: 42px;
+  height: 60px;
+  background: #fff;
+  border: 3px solid #673c63;
+  border-bottom: 0px;
+  border-radius: 3px;
+  transform: translate(60%, -15%);
+  transform-origin: center right;
+  box-shadow: -2px 0px 0px #95c6f2 inset;
+  animation: shake-left 3s infinite linear;
+}
+
+.candle2__stick {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  width: 3px;
+  height: 12px;
+  background: #673c63;
+  border-radius: 8px;
+  transform: translate(-50%, -100%);
+  transform-origin: bottom center;
+  animation: stick-animation 3s infinite linear;
+}
+
+.candle2__eyes {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  width: 35px;
+  height: 30px;
+  transform: translate(-50%, 0%);
+}
+
+.candle2__eyes-one {
+  position: absolute;
+  left: 30%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background: #673c63;
+  transform: translate(-80%, 0%);
+  animation: changeto-lower 3s infinite linear;
+}
+
+.candle2__eyes-two {
+  position: absolute;
+  left: 70%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background: #673c63;
+  transform: translate(-80%, 0%);
+  animation: changeto-greater 3s infinite linear;
+}
+
+/* 光波 */
+.light__wave {
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  z-index: 0;
+  transform: translate(-25%, -50%) scale(2.5, 2.5);
+  border: 2px solid rgba(255, 200, 80, 0.35);
+  animation: expand-light 3s infinite linear;
+}
+
+/* 火焰 */
+.candle2__fire {
+  position: absolute;
+  top: 50%;
+  left: 38%;
+  width: 16px;
+  height: 20px;
+  background: #ff9800;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform: translate(-50%, -50%);
+  animation: dance-fire 3s infinite linear;
+}
+
+/* ===== 动画关键帧 ===== */
+@keyframes blink-eyes {
+  0%, 35% { opacity: 1; transform: translate(-70%, 0%); }
+  36%, 39% { opacity: 0; transform: translate(-70%, 0%); }
+  40% { opacity: 1; transform: translate(-70%, 0%); }
+  50%, 65% { transform: translate(-140%, 0%); }
+  66% { transform: translate(-70%, 0%); }
+}
+
+@keyframes expand-body {
+  0%, 40% { transform: scale(1, 1) translate(60%, -25%); }
+  45%, 55% { transform: scale(1.1, 1.1) translate(60%, -28%); }
+  60% { transform: scale(0.89, 0.89) translate(60%, -25%); }
+  65% { transform: scale(1, 1) translate(60%, -25%); }
+  70% { transform: scale(0.95, 0.95) translate(60%, -25%); }
+  75% { transform: scale(1, 1) translate(60%, -25%); }
+}
+
+@keyframes uff {
+  0%, 40% { width: 0px; height: 0px; }
+  50%, 54% { width: 15px; height: 15px; left: 30%; }
+  59% { width: 5px; height: 5px; left: 20%; }
+  62% { width: 2px; height: 2px; left: 20%; }
+  67% { width: 0px; height: 0px; left: 30%; }
+}
+
+@keyframes move-left {
+  0%, 59%, 100% { width: 0px; left: 40%; }
+  60% { width: 30px; left: 30%; }
+  68% { width: 0px; left: 20%; }
+}
+
+@keyframes move-top {
+  0%, 64%, 100% { width: 0px; height: 0px; top: 0%; }
+  65% { width: 10px; height: 10px; top: 40%; left: 40%; }
+  80% { width: 0px; height: 0px; top: 20%; }
+}
+
+@keyframes shake-left {
+  0%, 40% { left: 20%; transform: translate(60%, -15%); }
+  50%, 54% { left: 20%; transform: translate(60%, -15%); }
+  59% { left: 20%; transform: translate(60%, -15%); }
+  62% { left: 18%; transform: translate(60%, -15%); }
+  65% { left: 21%; transform: translate(60%, -15%); }
+  67% { left: 20%; transform: translate(60%, -15%); }
+  75% {
+    left: 20%;
+    transform: scale(1.15, 0.85) translate(60%, -15%);
+    background: #fff;
+    border-color: #673c63;
   }
-  50% {                      /* 动画中间（50% 时刻） */
-    transform: rotate(270deg);  /* 旋转到 270 度 */
-    box-shadow:               /* 阴影颜色变化 */
-      0 10px 20px 0 #fff inset,    /* 白色保持不变 */
-      0 20px 10px 0 #edcad5 inset, /* 变为粉红色 */
-      0 40px 60px 0 #9f91d7 inset; /* 变为深紫蓝色 */
+  91% {
+    left: 20%;
+    transform: scale(1.18, 0.82) translate(60%, -10%);
+    background: #f44336;
+    border-color: #f44336;
+    box-shadow: -2px 0px 0px #f44336 inset;
   }
-  100% {                     /* 动画结束（100% 时刻） */
-    transform: rotate(450deg);  /* 旋转到 450 度（= 360 + 90，比起点多一圈） */
-    box-shadow:               /* 回到起始颜色 */
-      0 10px 20px 0 #fff inset,    /* 白色光晕：向下偏移10px，模糊20px */
-      0 20px 30px 0 #ba92e4 inset, /* 紫色光晕：向下偏移20px，模糊30px */
-      0 60px 60px 0 #9b8bd9 inset; /* 深紫色光晕：向下偏移60px，模糊60px */
+  92% { left: 20%; transform: scale(0.85, 1.15) translate(60%, -15%); }
+  95% { left: 20%; transform: scale(1.05, 0.95) translate(60%, -15%); }
+  97% { left: 20%; transform: scale(1, 1) translate(60%, -15%); }
+}
+
+@keyframes stick-animation {
+  0%, 40% { left: 50%; top: 0%; transform: translate(-50%, -100%); }
+  50%, 54% { left: 50%; top: 0%; transform: translate(-50%, -100%); }
+  59% { left: 50%; top: 0%; transform: translate(-50%, -100%); }
+  62% { left: 50%; top: 0%; transform: rotateZ(-15deg) translate(-50%, -100%); }
+  65% { left: 50%; top: 0%; transform: rotateZ(15deg) translate(-50%, -100%); }
+  70% { left: 50%; top: 0%; transform: rotateZ(-5deg) translate(-50%, -100%); }
+  72% { left: 50%; top: 0%; transform: rotateZ(5deg) translate(-50%, -100%); }
+  74%, 84% { left: 50%; top: 0%; transform: rotateZ(0deg) translate(-50%, -100%); }
+  85% { transform: rotateZ(180deg) translate(0%, 120%); }
+  92% { left: 50%; top: 0%; transform: translate(-50%, -100%); }
+}
+
+@keyframes expand-light {
+  10%, 29%, 59%, 89% {
+    transform: translate(-25%, -50%) scale(0, 0);
+    border: 2px solid rgba(255,200,80,0);
+  }
+  90%, 20%, 50% { transform: translate(-25%, -50%) scale(1, 1); }
+  95%, 96%, 26%, 27%, 56%, 57% {
+    transform: translate(-25%, -50%) scale(2, 2);
+        border: 2px solid rgba(235, 217, 177, 0.5);
+
+  }
+  0%, 28%, 58%, 100% {
+    transform: translate(-25%, -50%) scale(2.5, 2.5);
+        border: 2px solid rgba(255,200,80,0.2);
+
   }
 }
 
-/* ----- 每个字母的样式 ----- */
-.loader-letter {
-  display: inline-block;      /* 行内块级元素：既保持行内排列，又能设置宽高和变形 */
-  opacity: 0.4;              /* 透明度 40%（半透明） */
-  transform: translateY(0);   /* 垂直偏移为 0（初始位置） */
-  animation: loader-letter-anim 2s infinite;  /* 动画：跳动效果，持续2秒，无限循环 */
-  z-index: 1;                /* 层级为1，放在光晕（z-index:0）的上面 */
-  border-radius: 50ch;       /* 超大圆角（几乎变成胶囊形状） */
-  border: none;              /* 无边框 */
-  color: #1a2b4c;           /* 文字颜色：深蓝色 */
-}
-
-/* ----- 每个字母的动画延迟（依次跳动） ----- */
-.loader-letter:nth-child(1) { animation-delay: 0s; }     /* 第1个字母 G：延迟 0 秒 */
-.loader-letter:nth-child(2) { animation-delay: 0.1s; }   /* 第2个字母 e：延迟 0.1 秒 */
-.loader-letter:nth-child(3) { animation-delay: 0.2s; }   /* 第3个字母 n：延迟 0.2 秒 */
-.loader-letter:nth-child(4) { animation-delay: 0.3s; }   /* 第4个字母 e：延迟 0.3 秒 */
-.loader-letter:nth-child(5) { animation-delay: 0.4s; }   /* 第5个字母 r：延迟 0.4 秒 */
-.loader-letter:nth-child(6) { animation-delay: 0.5s; }   /* 第6个字母 a：延迟 0.5 秒 */
-.loader-letter:nth-child(7) { animation-delay: 0.6s; }   /* 第7个字母 t：延迟 0.6 秒 */
-
-
-/* ----- 字母跳动动画的关键帧 ----- */
-@keyframes loader-letter-anim {
-  0%, 100% {                /* 动画开始和结束时（0% 和 100%） */
-    opacity: 0.4;           /* 透明度 40%（半透明） */
-    transform: translateY(0); /* 保持在原位（不偏移） */
+@keyframes dance-fire {
+  59%, 89% { left: 40%; width: 0px; height: 0px; }
+  90%, 0%, 7%, 15%, 23%, 31%, 39%, 47%, 55% {
+    left: 38.5%; width: 16px; height: 20px; background: #ffc107;
   }
-  20% {                     /* 动画进行到 20% 时（弹跳到最高点） */
-    opacity: 1;             /* 透明度 100%（完全不透明，变亮） */
-    transform: scale(1.15); /* 放大到 1.15 倍 */
-  }
-  40% {                     /* 动画进行到 40% 时（下落回弹） */
-    opacity: 0.7;           /* 透明度 70% */
-    transform: translateY(0); /* 回到原位 */
+  94%, 3%, 11%, 19%, 27%, 35%, 43%, 51%, 58% {
+    left: 38.5%; width: 16px; height: 20px; background: #ff9800;
   }
 }
 
-/* =========================
-   手机端适配（屏幕宽度 ≤ 750px）
-   ========================= */
-@media (max-width: 750px) {
+@keyframes changeto-lower {
+  0%, 70%, 90% {
+    padding: 0px; border-radius: 100%; background: #673c63;
+    border-width: 0; transform: translate(-90%, 0%);
+  }
+  71%, 89% {
+    background: none; border: solid #673c63; border-width: 0 2px 2px 0;
+    padding: 1px; transform: rotate(-45deg) translate(-50%, -65%);
+  }
+}
+
+@keyframes changeto-greater {
+  0%, 70%, 90% {
+    top: 50%; padding: 0px; border-radius: 100%; background: #673c63;
+    border-width: 0; transform: translate(-80%, 0%);
+  }
+  71%, 89% {
+    top: 30%; background: none; border: solid #673c63; border-width: 0 2px 2px 0;
+    padding: 1px; transform: rotate(135deg) translate(-50%, -55%) translateY(5px); 
+  }
+}
+
+/* ===== 手机端 ===== */
+@media (max-width: 768px) {
   .hero {
-    flex-direction: column;    /* 改为纵向排列（上下排列） */
-    text-align: center;       /* 文字居中 */
-    padding: 1.5rem 1rem;     /* 内边距缩小：上下1.5rem，左右1rem */
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .intro-text {
+    min-width: unset;
   }
 
   .hero-loader {
-    margin-left: 0;           /* 取消左边距（不再靠右） */
-    margin-top: 0.5rem;       /* 添加上边距，和上方内容隔开 */
+    margin-top: 1rem;
   }
 
-  .loader-wrapper {
-    width: 80px;            /* 容器宽度缩小到 100px */
-    height: 80px;           /* 容器高度缩小到 100px */
-    font-size: 0.8em;        /* 字体缩小到 0.8 倍 */
+  .scene-wrapper {
+    width: 220px;
+    height: 150px;
+  }
+
+  .wrapper {
+    transform: scale(0.65) !important;
   }
 }
 
-/* =========================
-   小屏手机适配（屏幕宽度 ≤ 480px）
-   ========================= */
-@media (max-width: 480px) {
-  .loader-wrapper {
-    width: 100px;             /* 容器宽度缩小到 80px */
-    height: 100px;            /* 容器高度缩小到 80px */
-    font-size: 0.6em;        /* 字体缩小到 0.6 倍 */
-  }
-}
+
 </style>
 
 <body>
@@ -374,19 +633,42 @@ TIAN JIAHUI EDUHK，
 </div>
       </div>
 
-      <div class="hero-loader">
-    <div class="loader-wrapper">
-      <span class="loader-letter">W</span>
-      <span class="loader-letter">e</span>
-      <span class="loader-letter">l</span>
-      <span class="loader-letter">c</span>
-      <span class="loader-letter">o</span>
-      <span class="loader-letter">m</span>
-      <span class="loader-letter">e</span>
-      <div class="loader"></div>
+  <div class="hero-loader">
+    <div class="scene-wrapper">
+      <div class="wrapper">
+        <div class="candles">
+          <div class="light__wave"></div>
+          <div class="candle1">
+            <div class="candle1__body">
+              <div class="candle1__eyes">
+                <span class="candle1__eyes-one"></span>
+                <span class="candle1__eyes-two"></span>
+              </div>
+              <div class="candle1__mouth"></div>
+            </div>
+            <div class="candle1__stick"></div>
+          </div>
+          <div class="candle2">
+            <div class="candle2__body">
+              <div class="candle2__eyes">
+                <div class="candle2__eyes-one"></div>
+                <div class="candle2__eyes-two"></div>
+              </div>
+            </div>
+            <div class="candle2__stick"></div>
+          </div>
+          <div class="candle2__fire"></div>
+          <div class="sparkles-one"></div>
+          <div class="sparkles-two"></div>
+          <div class="candle__smoke-one"></div>
+          <div class="candle__smoke-two"></div>
+        </div>
+        <div class="floor"></div>
+      </div>
     </div>
   </div>
-    </div>
+
+</div>
     
 
     <!-- 首页卡片 -->
@@ -1121,6 +1403,19 @@ My undergraduate research centered on visual interaction design, UI/UX for web a
       data-en="Small Choices, Their World"
       data-zh-hant="用微小的選擇，改變它們的世界"
       data-zh-hans="用微小的选择，改变它们的世界"
+    ></span>
+  </a>
+</p>
+
+<p style="margin-top:0.6rem;">
+  <i class="fas fa-seedling"></i>
+  <a 
+    href="#home"  style="text-decoration: none;""
+  >
+    <span
+      data-en="A Note on the Homepage Animation:​ To extinguish a candle is to stop consuming, to reverence life, and to exercise self-restraint. Together, let us step toward a sustainable tomorrow"
+      data-zh-hant="主頁動畫解讀：熄滅蠟燭寓意着停止消耗、敬畏生命、自我約束，讓我們一起向可持續發展目標邁進"
+      data-zh-hans="主页动画解读：熄灭蜡烛寓意着停止消耗、敬畏生命、自我约束，让我们一起向可持续发展目标迈进"
     ></span>
   </a>
 </p>
